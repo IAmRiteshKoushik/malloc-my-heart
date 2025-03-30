@@ -1,4 +1,4 @@
-# Writing Your Own Memory Allocator and Arena Allocator
+# Writing Your Own Memory Allocator
 
 The `malloc` contains the following:
 0. Basic allocator
@@ -10,17 +10,14 @@ The `malloc` contains the following:
 6. Fixed Hashtable
 7. Separate Data Structure
 
-The `arena-allocator` contains the following
-1.
+## Notes on Allocator
 
-## Steps to run: 
-1. To run the malloc
-```bash
-make
+Think of the following as memory partitions
 ```
-2. To run the arena allocator
-```bash
-# Build the arena.c file and output to `main` as an executable
-bash ./build.sh
+---------------------------------
+| * | * |   | * | * | * |
+---------------------------------
 ```
-
+If we consider each block to be 1 byte and I have to insert something
+worth of 2 bytes then I cannot use the `unallocated` space in the centre
+I have to allocated chunks towards the end.
